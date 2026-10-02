@@ -1,0 +1,17 @@
+# AudioGuard Multimodal Architecture Config
+model:
+  acoustic_backbone: "facebook/wav2vec2-base"
+  semantic_backbone: "bert-base-uncased"
+  fusion_type: "attention_late_fusion"
+  dropout_rate: 0.3
+  
+training:
+  batch_size: 32
+  gradient_accumulation_steps: 2
+  learning_rate_acoustic: 1e-4
+  learning_rate_semantic: 2e-5
+  learning_rate_fusion: 1e-3
+  optimizer: "AdamW"
+  weight_decay: 0.01
+  loss_function: "WeightedFocalLoss"
+  gamma: 2.0
